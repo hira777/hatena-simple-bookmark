@@ -1,0 +1,37 @@
+{
+  "name": "hatena-simple-bookmark",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --fix src --ext=js,vue",
+    "dev": "webpack-dev-server --inline --hot --no-info --content-base docs/",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.5",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-vue-libs": "^2.1.0",
+    "prettier": "^1.11.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.0.4",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "2.4.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "events": "^1.1.1",
+    "superagent": "^3.6.0",
+    "vue": "^2.4.2",
+    "vue-router": "^2.7.0"
+  }
+}
