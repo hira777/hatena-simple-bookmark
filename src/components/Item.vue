@@ -1,16 +1,25 @@
 <template>
   <article class="item">
-    <a :href="item.link" target="blank">
+    <a 
+      :href="item.link" 
+      target="blank">
       <h1 class="item-title">{{ item.title }}</h1>
       <div class="item-information">
-      <span>
-        <a :href="item | createBookmarkEntry" target="blank">
-          <img class="item-hatebu-count" :src="item | createBookmarkCountImage">
-        </a>
-      </span>
+        <span>
+          <a 
+            :href="item | createBookmarkEntry" 
+            target="blank">
+            <img
+              :src="item | createBookmarkCountImage"
+              class="item-hatebu-count" >
+          </a>
+        </span>
       </div>
       <div class="item-content">
-        <div class="item-image" v-show="visibleItemImage" v-html="itemImage"></div>
+        <div
+          v-show="visibleItemImage"
+          class="item-image"
+          v-html="itemImage"/>
         <p class="item-description">{{ item.description }}</p>
       </div>
     </a>
@@ -18,46 +27,48 @@
 </template>
 
 <script>
-  export default {
+export default {
+  name: 'Item',
 
-    name: 'Item',
-
-    props: {
-      item: Object
+  filters: {
+    createBookmarkEntry(item) {
+      return `//b.hatena.ne.jp/entry/${item.link}`;
     },
+    createBookmarkCountImage(item) {
+      return `//b.hatena.ne.jp/entry/image/${item.link}`;
+    },
+  },
 
-    methods: {
-      entryImage() {
-        const el = document.createElement('div');
-        el.innerHTML = this.item.encoded;
-        return el.getElementsByClassName('entry-image')[0];
+  props: {
+    item: {
+      type: Object,
+      default: null,
+    },
+  },
+
+  computed: {
+    visibleItemImage() {
+      return typeof this.entryImage() !== 'undefined';
+    },
+    itemImage() {
+      const entryImage = this.entryImage();
+
+      if (typeof entryImage !== 'undefined') {
+        entryImage.src = entryImage.src.replace('http://', '//');
+        return entryImage.outerHTML;
       }
     },
+  },
 
-    computed: {
-      visibleItemImage() {
-        return typeof this.entryImage() !== 'undefined';
-      },
-      itemImage() {
-        const entryImage = this.entryImage();
-
-        if (typeof entryImage !== 'undefined') {
-          entryImage.src = entryImage.src.replace('http://', '//');
-          return entryImage.outerHTML;
-        }
-      },
+  methods: {
+    entryImage() {
+      const el = document.createElement('div');
+      el.innerHTML = this.item.encoded;
+      return el.getElementsByClassName('entry-image')[0];
     },
-
-    filters: {
-      createBookmarkEntry(item) {
-        return `//b.hatena.ne.jp/entry/${item.link}`
-      },
-      createBookmarkCountImage(item) {
-        return `//b.hatena.ne.jp/entry/image/${item.link}`;
-      },
-    }
-
-  }</script>
+  },
+};
+</script>
 
 <style lang="stylus">
   @import "../variables.styl"

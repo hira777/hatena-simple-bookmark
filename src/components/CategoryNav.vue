@@ -4,54 +4,61 @@
       <item
         v-for="item in items"
         :item="item"
-        :key="item.id">
-      </item>
+        :key="item.id"/>
     </ul>
   </nav>
 </template>
 
 <script>
-  import Item from './CategoryNavItem.vue';
+import Item from './CategoryNavItem.vue';
 
-  export default {
+export default {
+  name: 'CategoryNav',
 
-    name: 'CategoryNav',
+  components: {
+    Item,
+  },
 
-    components: {
-      Item
-    },
-
-    data() {
-      return {
-        items: [{
+  data() {
+    return {
+      items: [
+        {
           category: '世の中',
-          route: 'social'
-        }, {
+          route: 'social',
+        },
+        {
           category: '政治と経済',
-          route: 'economics'
-        }, {
+          route: 'economics',
+        },
+        {
           category: '暮らし',
-          route: 'life'
-        }, {
+          route: 'life',
+        },
+        {
           category: '学び',
-          route: 'knowledge'
-        }, {
+          route: 'knowledge',
+        },
+        {
           category: 'テクノロジー',
-          route: 'it'
-        }, {
+          route: 'it',
+        },
+        {
           category: 'エンタメ',
-          route: 'entertainment'
-        }, {
+          route: 'entertainment',
+        },
+        {
           category: 'アニメとゲーム',
-          route: 'game'
-        }, {
+          route: 'game',
+        },
+        {
           category: 'おもしろ',
-          route: 'fun'
-        }],
-      }
-    }
-
-  }</script>
+          route: 'fun',
+        },
+      ],
+    };
+  },
+};
+</script>
 
 <style lang="stylus">
   .category-nav-list

@@ -2,24 +2,26 @@
   <div id="wrapper">
     <header class="header">
       <div class="l-container">
-        <a class="site-title" href="#/">Hatena::SimpleBookmark</a>
+        <a 
+          class="site-title" 
+          href="#/">Hatena::SimpleBookmark</a>
       </div>
     </header>
 
     <div class="l-container">
-      <router-view name="categoryNav"></router-view>
+      <router-view name="categoryNav"/>
     </div>
 
     <div class="l-container">
       <transition>
         <keep-alive>
-          <router-view name="items"></router-view>
+          <router-view name="items"/>
         </keep-alive>
       </transition>
     </div>
 
     <div class="l-container">
-      <router-view name="categoryNav"></router-view>
+      <router-view name="categoryNav"/>
     </div>
   </div>
 </template>

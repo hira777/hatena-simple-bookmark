@@ -1,31 +1,36 @@
 <template>
-  <li class="category-nav-item" :class="{active: isActive}">
+  <li
+    :class="{active: isActive}"
+    class="category-nav-item"
+  >
     <router-link :to="item.route | formatRoute">{{ item.category }}</router-link>
   </li>
 </template>
 
 <script>
-  export default {
+export default {
+  name: 'CategoryNavItem',
 
-    name: 'CategoryNavItem',
-
-    props: {
-      item: Object
+  filters: {
+    formatRoute(route) {
+      return `/hotentry/${route}`;
     },
+  },
 
-    computed: {
-      isActive() {
-        return this.item.route === this.$route.params.category;
-      }
+  props: {
+    item: {
+      type: Object,
+      default: null,
     },
+  },
 
-    filters: {
-      formatRoute(route) {
-        return `/hotentry/${route}`;
-      }
-    }
-
-  }</script>
+  computed: {
+    isActive() {
+      return this.item.route === this.$route.params.category;
+    },
+  },
+};
+</script>
 
 <style lang="stylus">
   .category-nav-item

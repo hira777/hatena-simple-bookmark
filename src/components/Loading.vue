@@ -1,27 +1,33 @@
 <template>
   <transition name="fade">
-    <div class="spinner" v-show="loading" :class="{ active: loading }">
+    <div
+      v-show="loading"
+      :class="{ active: loading }"
+      class="spinner"
+    >
       <div class="spinner-inner">
-        <div class="rect1"></div>
-        <div class="rect2"></div>
-        <div class="rect3"></div>
-        <div class="rect4"></div>
-        <div class="rect5"></div>
+        <div class="rect1"/>
+        <div class="rect2"/>
+        <div class="rect3"/>
+        <div class="rect4"/>
+        <div class="rect5"/>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
-  export default {
+export default {
+  name: 'Loading',
 
-    name: 'Loading',
-
-    props: {
-      loading: Boolean
-    }
-
-  }</script>
+  props: {
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
+</script>
 
 <style lang="stylus">
   .spinner
