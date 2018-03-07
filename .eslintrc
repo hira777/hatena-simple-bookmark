@@ -3,10 +3,14 @@
     "es6": true,
     "browser": true
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "extends": [
-    "plugin:vue-libs/recommended",
+    "plugin:vue/recommended",
     "plugin:prettier/recommended"
   ],
+  "plugins": ["vue"],
   "rules": {
     "prettier/prettier": [
       "error",
