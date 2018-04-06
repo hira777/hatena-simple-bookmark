@@ -1,17 +1,11 @@
 <template>
   <div id="wrapper">
-    <header class="header">
-      <div class="l-container">
-        <a 
-          class="site-title" 
-          href="#/">Hatena::SimpleBookmark</a>
-      </div>
-    </header>
+    <common-header/>
 
     <div class="l-container">
       <router-view name="categoryNav"/>
     </div>
-
+      
     <div class="l-container">
       <transition>
         <keep-alive>
@@ -23,8 +17,20 @@
     <div class="l-container">
       <router-view name="categoryNav"/>
     </div>
-  </div>
+  </header></div>
 </template>
+
+<script>
+import commonHeader from './components/Header.vue';
+
+export default {
+  name: 'App',
+
+  components: {
+    commonHeader,
+  },
+};
+</script>
 
 <style lang="stylus">
   @import "variables.styl"
@@ -33,13 +39,6 @@
   .l-container
     margin: 0 auto
     max-width: 780px
-
-  .header
-    padding: 10px 15px
-    background: #2c6dbd
-    a
-      color: #fff
-      text-decoration: none
 
   .site-title
     font-size: 1.8rem
