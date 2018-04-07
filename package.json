@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint --fix src --ext=js,vue",
     "dev": "parcel src/index.pug -d docs",
-    "build": "parcel build src/index.pug -d docs --public-url ./"
+    "build": "parcel build src/index.pug -d docs"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^1.0.0",
