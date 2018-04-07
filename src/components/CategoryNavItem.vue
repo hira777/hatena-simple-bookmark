@@ -1,10 +1,6 @@
-<template>
-  <li
-    :class="{active: isActive}"
-    class="category-nav-item"
-  >
-    <router-link :to="item.route | formatRoute">{{ item.category }}</router-link>
-  </li>
+<template lang="pug">
+  li(:class="{active: isActive}", class="category-nav-item")
+    router-link(:to="item.route | formatRoute") {{ item.category }}
 </template>
 
 <script>

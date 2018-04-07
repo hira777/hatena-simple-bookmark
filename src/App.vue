@@ -1,33 +1,39 @@
-<template>
-  <div id="wrapper">
-    <common-header/>
-
-    <div class="l-container">
-      <router-view name="categoryNav"/>
-    </div>
-      
-    <div class="l-container">
-      <transition>
-        <keep-alive>
-          <router-view name="items"/>
-        </keep-alive>
-      </transition>
-    </div>
-
-    <div class="l-container">
-      <router-view name="categoryNav"/>
-    </div>
-  </header></div>
+<template lang="pug">
+  #wrapper
+    common-header
+    .l-container
+      router-view(name="categoryNav")
+    .l-container
+      transition
+        keep-alive
+          router-view(name="items", :handleUpdating="handleUpdating")
+    .l-container
+      router-view(name="categoryNav")
+    loading(:loading="loading")
 </template>
 
 <script>
 import commonHeader from './components/Header.vue';
+import Loading from './components/Loading.vue';
 
 export default {
   name: 'App',
 
   components: {
     commonHeader,
+    Loading,
+  },
+
+  data() {
+    return {
+      loading: false,
+    };
+  },
+
+  methods: {
+    handleUpdating(updating) {
+      this.loading = updating;
+    },
   },
 };
 </script>

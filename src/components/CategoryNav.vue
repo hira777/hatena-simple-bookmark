@@ -1,12 +1,7 @@
-<template>
-  <nav class="category-nav">
-    <ul class="category-nav-list">
-      <item
-        v-for="item in items"
-        :item="item"
-        :key="item.id"/>
-    </ul>
-  </nav>
+<template lang="pug">
+  nav.category-nav
+    ul.category-nav-list
+      item(v-for="item in items", :item="item", :key="item.id")
 </template>
 
 <script>

@@ -1,19 +1,12 @@
-<template>
-  <transition name="fade">
-    <div
-      v-show="loading"
-      :class="{ active: loading }"
-      class="spinner"
-    >
-      <div class="spinner-inner">
-        <div class="rect1"/>
-        <div class="rect2"/>
-        <div class="rect3"/>
-        <div class="rect4"/>
-        <div class="rect5"/>
-      </div>
-    </div>
-  </transition>
+<template lang="pug">
+  transition(name="fade")
+    .spinner(v-show="loading", :class="{ active: loading }")
+      .spinner-inner
+        .rect1
+        .rect2
+        .rect3
+        .rect4
+        .rect5
 </template>
 
 <script>

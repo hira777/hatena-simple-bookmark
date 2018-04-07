@@ -1,11 +1,7 @@
-<template>
-  <header class="header">
-    <div class="l-container">
-      <a
-        class="site-title"
-        href="#/">Hatena::SimpleBookmark</a>
-    </div>
-  </header>
+<template lang="pug">
+  header.header
+    .l-container
+      a.site-title(href="#/") Hatena::SimpleBookmark
 </template>
 
 <script>
@@ -21,4 +17,6 @@ export default {
     a
       color: #fff
       text-decoration: none
+      &:visited
+        color: #fff
 </style>

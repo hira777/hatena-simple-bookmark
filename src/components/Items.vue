@@ -1,27 +1,24 @@
-<template>
-  <div
-    :class="{loading: loading}"
-    class="items-view" 
-  >
-    <item
-      v-for="item in items"
-      :item="item"
-      :key="item.id"/>
-    <loading :loading="loading"/>
-  </div>
+<template lang="pug">
+  .items-view(:class="{loading: loading}")
+    item(v-for="item in items", :item="item", :key="item.id")
 </template>
 
 <script>
 import store from '../store/index';
 import Item from './Item.vue';
-import Loading from './Loading.vue';
 
 export default {
   name: 'Items',
 
   components: {
     Item,
-    Loading,
+  },
+
+  props: {
+    handleUpdating: {
+      type: Function,
+      default: null,
+    },
   },
 
   data() {
@@ -40,14 +37,14 @@ export default {
 
     store.on('update', items => {
       this.items = items;
-      this.loading = false;
+      this.handleUpdating && this.handleUpdating(false);
     });
   },
 
   methods: {
     update() {
       const category = this.$route.params.category;
-      this.loading = true;
+      this.handleUpdating && this.handleUpdating(true);
       store.fetchItems(category);
     },
   },

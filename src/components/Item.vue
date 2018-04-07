@@ -1,29 +1,14 @@
-<template>
-  <article class="item">
-    <a 
-      :href="item.link" 
-      target="blank">
-      <h1 class="item-title">{{ item.title }}</h1>
-      <div class="item-information">
-        <span>
-          <a 
-            :href="item | createBookmarkEntry" 
-            target="blank">
-            <img
-              :src="item | createBookmarkCountImage"
-              class="item-hatebu-count" >
-          </a>
-        </span>
-      </div>
-      <div class="item-content">
-        <div
-          v-show="visibleItemImage"
-          class="item-image"
-          v-html="itemImage"/>
-        <p class="item-description">{{ item.description }}</p>
-      </div>
-    </a>
-  </article>
+<template lang="pug">
+  article.item
+    a(:href="item.link", target="blank")
+      h1.item-title {{ item.title }}
+      .item-information
+        span
+          a(:href="item | createBookmarkEntry", target="blank")
+            img.item-hatebu-count(:src="item | createBookmarkCountImage")
+      .item-content
+        .item-image(v-show="visibleItemImage", v-html="itemImage")
+        p.item-description {{ item.description }}
 </template>
 
 <script>
