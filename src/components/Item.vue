@@ -1,10 +1,10 @@
 <template lang="pug">
   article.item
-    a(:href="item.link", target="blank")
+    a(:href="item.link", target="_blank")
       h1.item-title {{ item.title }}
       .item-information
         span
-          a(:href="item | createBookmarkEntry", target="blank")
+          a(:href="item | createBookmarkEntry", target="_blank")
             img.item-hatebu-count(:src="item | createBookmarkCountImage")
       .item-content
         .item-image(v-show="visibleItemImage", v-html="itemImage")
